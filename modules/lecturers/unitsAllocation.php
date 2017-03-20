@@ -1,3 +1,8 @@
+<?php
+require'../../session.php';
+require'../../connection.php';
+?>
+
 <html>
   <head>
     <title>Unit allocation</title>
@@ -67,7 +72,6 @@
         <div class="row">
             <table class="table table-hover">
              <thead>
-               <th>#</th>
                <th>Unit Id</th>
                <th>Unit Name</th>
                <th>Class Id</th>
@@ -76,9 +80,30 @@
              </thead>
 
              <tr>
-               <td>1</td>
-               <td></td>
-               <td></td>
+               <td><?php 
+                        $q ="SELECT * FROM `units`";
+                         $r = mysqli_query($conn, $q);
+
+                            while ($row = mysqli_fetch_array($r)) {
+                              $unitId = $row['Unitid'];
+                              ?>
+                            <option value="<?php echo $unitId; ?>"><?php echo "$unitId"; ?></option>
+                             <?php
+                            }
+                         ?></td>
+               <td>
+                 <?php 
+                        $q ="SELECT * FROM `units`";
+                         $r = mysqli_query($conn, $q);
+
+                            while ($row = mysqli_fetch_array($r)) {
+                              $unitName = $row['Unitname'];
+                              ?>
+                            <option value="<?php echo $unitName; ?>"><?php echo "$unitName"; ?></option>
+                             <?php
+                            }
+                         ?></td>
+
                <td></td>
                <td></td>
                <td><button type="button" class="btn btn-success">Drop</button></td>
@@ -158,14 +183,18 @@
                                       <label for="exampleInputunit1">Units</label>
                                       <select class="form-control">
                                       <option>----------SELECT UNITS-----------------------</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                        <option>8</option>
+                                      <?php 
+                                          $q ="SELECT * FROM `units`";
+                                          $r = mysqli_query($conn, $q);
+
+                                          while ($row = mysqli_fetch_array($r)) {
+                                            $unitName = $row['Unitname'];
+                                            ?>
+                                          <option value="<?php echo $unitName; ?>"><?php echo "$unitName"; ?></option>
+                                            <?php
+                                          }
+                                       ?>
+
                                       </select>
                                     </div>
                                   
