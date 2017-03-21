@@ -80,18 +80,18 @@ require'../../connection.php';
 
              <tr>
                <td><?php 
-                        $q ="SELECT * FROM  units";
+                        $q ="SELECT * FROM  `unitsallocation`";
                          $r = mysqli_query($conn, $q);
                             $i=0;
                             while ($row = mysqli_fetch_array($r)) {
                               $id = $row['id'];
-                              $unitId = $row['Unitid'];
-                              $unitName = $row['Unitname'];
+                              
+                              $unitName = $row['Unitid'];
                               $i++;
                               ?>
                               <tr>
                             <td><?php echo $i; ?></td>
-                            <td><?php echo $unitId; ?></td>
+                            <td><?php echo "unitId"; ?></td>
                             <td><?php echo $unitName; ?></td>
                             <td><a href="unitsAllocation.php?id=<?php echo $id; ?>"> Drop</a></td>
                             </tr>
@@ -170,7 +170,7 @@ require'../../connection.php';
                         </div>
                         <div class="modal-body">
                            <!--form starts here-->
-                                   <form action='add.php' method='POST'>
+                                   <form action='../../add.php' method='POST'>
                                     <div class="form-group">
                                       <label for="exampleInputcourse1">Course</label>
                                       <select class="form-control" name="course">
@@ -207,8 +207,9 @@ require'../../connection.php';
 
                                           while ($row = mysqli_fetch_array($r)) {
                                             $unitName = $row['Unitname'];
+                                            $unitId = $row['unitid'];
                                             ?>
-                                          <option value="<?php echo $unitName; ?>"><?php echo "$unitName"; ?></option>
+                                          <option value="<?php echo "$unitName"; ?>"><?php echo "$unitName"; ?></option>
                                             <?php
                                           }
                                        ?>

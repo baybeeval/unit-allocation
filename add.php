@@ -8,8 +8,12 @@ if ($_POST) {
 	$unit = $_POST['unit'];
 
 
-	$q ="";
-	$r =;
+	$q ="INSERT INTO `unitsallocation`(`id`, `Unitid`, `course`, `year`, `semsester`) VALUES (NULL,'$unit','$course', '$year', '$semester')";
+	if (mysqli_query($conn, $q)) {
+	echo "Unit added successfully";
+	}else{
+		echo "an error occurred".mysql_errno();
+	}
 
 }
 
