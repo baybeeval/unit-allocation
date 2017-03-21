@@ -72,44 +72,62 @@ require'../../connection.php';
         <div class="row">
             <table class="table table-hover">
              <thead>
-               <th>Unit Id</th>
-               <th>Unit Name</th>
-               <th>Class Id</th>
-               <th>Level</th>
-               <th>Modify</th>
+              <th>Id</th>
+              <th>Unit Id</th>
+              <th>Unit Name</th>
+              <th>Modify</th>
              </thead>
 
              <tr>
                <td><?php 
-                        $q ="SELECT * FROM `units`";
+                        $q ="SELECT * FROM  units";
                          $r = mysqli_query($conn, $q);
-
+                            $i=0;
                             while ($row = mysqli_fetch_array($r)) {
+                              $id = $row['id'];
                               $unitId = $row['Unitid'];
-                              ?>
-                            <option value="<?php echo $unitId; ?>"><?php echo "$unitId"; ?></option>
-                             <?php
-                            }
-                         ?></td>
-               <td>
-                 <?php 
-                        $q ="SELECT * FROM `units`";
-                         $r = mysqli_query($conn, $q);
-
-                            while ($row = mysqli_fetch_array($r)) {
                               $unitName = $row['Unitname'];
+                              $i++;
                               ?>
-                            <option value="<?php echo $unitName; ?>"><?php echo "$unitName"; ?></option>
+                              <tr>
+                            <td><?php echo $i; ?></td>
+                            <td><?php echo $unitId; ?></td>
+                            <td><?php echo $unitName; ?></td>
+                            <td><a href="unitsAllocation.php?id=<?php echo $id; ?>"> Drop</a></td>
+                            </tr>
                              <?php
                             }
                          ?></td>
-
-               <td></td>
-               <td></td>
-               <td><button type="button" class="btn btn-success">Drop</button></td>
              </tr>
             </table>
-          
+          <?php
+            if(isset($_GET['id'])){
+
+              $get_id=$_GET['id'];
+
+                $delete="DELETE FROM `units` WHERE `units`.`id` = $id;";
+                $r_delete= mysqli_query($conn,$delete);
+
+                if($r_delete){
+                  echo "<script>alert('unit is succesfully dropped!!')</script>";
+                  echo "<script>window.open('unitsAllocation.php','_self')</script>";
+                }
+            }
+
+
+
+
+
+          ?>
+
+
+
+
+
+
+
+
+
         </div>
 
 
@@ -152,36 +170,36 @@ require'../../connection.php';
                         </div>
                         <div class="modal-body">
                            <!--form starts here-->
-                                   <form action='index.php' method='POST'>
+                                   <form action='add.php' method='POST'>
                                     <div class="form-group">
                                       <label for="exampleInputcourse1">Course</label>
-                                      <select class="form-control">
+                                      <select class="form-control" name="course">
                                         <option>----------SELECT COURSE-----------------------</option>
-                                        <option>BSIT</option>
-                                        <option>BTIT</option>
+                                        <option value="BSIT">BSIT</option>
+                                        <option value="BSIT">BTIT</option>
                                       </select>
                                     </div>
                                     <div class="form-group">
                                       <label for="exampleInputyear1">Year</label>
-                                     <select class="form-control">
+                                     <select name="year" class="form-control">
                                      <option>----------SELECT YEAR-----------------------</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
                                       </select>
                                     </div>
                                     <div class="form-group">
                                       <label for="exampleInputsemester1">Semester</label>
-                                      <select class="form-control">
+                                      <select name="semester" class="form-control">
                                       <option>----------SELECT SEMESTER-----------------------</option>
-                                        <option>I</option>
-                                        <option>II</option>
+                                        <option value="I">I</option>
+                                        <option value="II">II</option>
                                       </select>
                                     </div>
                                     <div class="form-group">
                                       <label for="exampleInputunit1">Units</label>
-                                      <select class="form-control">
+                                      <select name="unit" class="form-control">
                                       <option>----------SELECT UNITS-----------------------</option>
                                       <?php 
                                           $q ="SELECT * FROM `units`";
