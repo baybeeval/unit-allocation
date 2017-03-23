@@ -31,7 +31,20 @@
           <label for="exampleInputunitname">Unit Name</label>
           <input type="text" name="Unitname" class="form-control" id="exampleInputunitname" placeholder="Enter Unit Name">
         </div>
+        <div class="form-group">
+          <label for="exampleInputcourse">Course</label>
+          <input type="text" name="Course" class="form-control" id="exampleInputcourse" placeholder="Enter Course ">
+        </div>
         
+        <div class="form-group">
+          <label for="exampleInputyear">>Year</label>
+          <input type="varchar" name="Year" class="form-control" id="exampleInputyear" placeholder="Enter Year">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputsemester">Semester</label>
+          <input type="text" name="Semester" class="form-control" id="exampleInputsemester" placeholder="Enter Semester">
+        </div>
         <button type="submit" class="btn btn-default">Add units</button>
       </form>
 </div>

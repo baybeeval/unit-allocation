@@ -86,13 +86,14 @@ require'../../connection.php';
                             while ($row = mysqli_fetch_array($r)) {
                               $id = $row['id'];
                               
-                              $unitName = $row['Unitid'];
+                              $unitID = $row['Unitid'];
+                              $unitName = $row['Unitname'];
                               $i++;
                               ?>
                               <tr>
                             <td><?php echo $i; ?></td>
-                            <td><?php echo "unitId"; ?></td>
-                            <td><?php echo $unitName; ?></td>
+                            <td><?php echo $unitID; ?></td>
+                             <td><?php echo $unitName; ?></td>
                             <td><a href="unitsAllocation.php?id=<?php echo $id; ?>"> Drop</a></td>
                             </tr>
                              <?php
@@ -105,7 +106,7 @@ require'../../connection.php';
 
               $get_id=$_GET['id'];
 
-                $delete="DELETE FROM `units` WHERE `units`.`id` = $id;";
+                $delete="DELETE FROM  `unitsallocation`  WHERE  `unitsallocation`.`id` = $id;";
                 $r_delete= mysqli_query($conn,$delete);
 
                 if($r_delete){
@@ -175,12 +176,12 @@ require'../../connection.php';
                                       <label for="exampleInputcourse1">Course</label>
                                       <select class="form-control" name="course">
                                         <option>----------SELECT COURSE-----------------------</option>
-                                        <option value="BSIT">BSIT</option>
-                                        <option value="BSIT">BTIT</option>
+                                        <option value="BSIT">Bachelor of Science in Information Technology</option>
+                                        <option value="BTIT">Bachelor of Technology in Information and Communication Technology</option>
                                       </select>
                                     </div>
                                     <div class="form-group">
-                                      <label for="exampleInputyear1">Year</label>
+                                      <label form="exampleInputyear1">Year</label>
                                      <select name="year" class="form-control">
                                      <option>----------SELECT YEAR-----------------------</option>
                                         <option value="1">1</option>
@@ -207,9 +208,10 @@ require'../../connection.php';
 
                                           while ($row = mysqli_fetch_array($r)) {
                                             $unitName = $row['Unitname'];
-                                            $unitId = $row['unitid'];
+                                            $unitId = $row['Unitid'];
                                             ?>
-                                          <option value="<?php echo "$unitName"; ?>"><?php echo "$unitName"; ?></option>
+                                          <option value="<?php echo "$unitId"; ?>"><?php echo "$unitName"; ?></option>
+
                                             <?php
                                           }
                                        ?>
