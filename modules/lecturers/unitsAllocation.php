@@ -49,16 +49,13 @@ require'../../connection.php';
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Link</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </li>
+       <ul class="nav navbar-nav navbar-right">
+      <li><a href="" ><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+      <li><a href="" ><i class="fa fa-star" aria-hidden="true"></i> TUM</a></li>
+      <li><a href="" ><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</a></li>
+      <li><a href="" ><i class="fa fa-envelope" aria-hidden="true"></i> Gmail</a></li>
+    </ul>
+     
     </ul>
   </div><!-- /.navbar-collapse -->   
   </div>
@@ -174,16 +171,27 @@ require'../../connection.php';
                                    <form action='../../add.php' method='POST'>
                                     <div class="form-group">
                                       <label for="exampleInputcourse1">Course</label>
-                                      <select class="form-control" name="course">
-                                        <option>----------SELECT COURSE-----------------------</option>
-                                        <option value="BSIT">Bachelor of Science in Information Technology</option>
-                                        <option value="BTIT">Bachelor of Technology in Information and Communication Technology</option>
+                                      <select class="form-control" name="course" id="course" onchange="getunits()">
+                                        <option value="">----------SELECT COURSE-----------------------</option>
+                                              <?php 
+                                                    $qC ="SELECT * FROM `course` ";
+                                                                      $rC = mysqli_query($conn, $qC);
+
+                                                                      while ($rowC = mysqli_fetch_array($rC)) {
+                                                                        $Course = $rowC['Course'];
+                                                                        ?>
+                                                                      <option value="<?php echo "$Course"; ?>"><?php echo "$Course"; ?></option>
+
+                                                                        <?php
+                                                                      }
+
+                                                            ?>
                                       </select>
                                     </div>
                                     <div class="form-group">
                                       <label form="exampleInputyear1">Year</label>
-                                     <select name="year" class="form-control">
-                                     <option>----------SELECT YEAR-----------------------</option>
+                                     <select name="year" class="form-control" id="year" >
+                                     <option value="">----------SELECT YEAR-----------------------</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -192,31 +200,20 @@ require'../../connection.php';
                                     </div>
                                     <div class="form-group">
                                       <label for="exampleInputsemester1">Semester</label>
-                                      <select name="semester" class="form-control">
-                                      <option>----------SELECT SEMESTER-----------------------</option>
+                                      <select name="semester" class="form-control" id="semester" >
+                                      <option value="">----------SELECT SEMESTER-----------------------</option>
                                         <option value="I">I</option>
                                         <option value="II">II</option>
                                       </select>
                                     </div>
                                     <div class="form-group">
                                       <label for="exampleInputunit1">Units</label>
-                                      <select name="unit" class="form-control">
-                                      <option>----------SELECT UNITS-----------------------</option>
-                                      <?php 
-                                          $q ="SELECT * FROM `units`";
-                                          $r = mysqli_query($conn, $q);
-
-                                          while ($row = mysqli_fetch_array($r)) {
-                                            $unitName = $row['Unitname'];
-                                            $unitId = $row['Unitid'];
-                                            ?>
-                                          <option value="<?php echo "$unitId"; ?>"><?php echo "$unitName"; ?></option>
-
-                                            <?php
-                                          }
-                                       ?>
-
+                                      <div id="unitList">
+                                      <select name="unit" class="form-control" id="unit" >
+                                      <option value="">----------SELECT UNITS-----------------------</option>
                                       </select>
+                                       </div>
+                                      
                                     </div>
                                   
                                     <button type="submit" class="btn btn-default">Submit</button>
@@ -233,5 +230,45 @@ require'../../connection.php';
     <script src="../../assets/js/jquery-3.1.1.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../../assets/js/bootstrap.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      if ($('#course').val()=='') {
+           $('#year').prop('disabled', true)
+           $('#semester').prop('disabled', true);
+           $('#unit').prop('disabled', true);       
+      }
+
+      $('#course').on('change', function(){
+        $("#year").prop("disabled", false);     
+      })
+
+       $("#year").on('change', function(){
+         $('#semester').prop('disabled', false);
+       })
+
+      
+       $("#semester").on('change', function(){
+         $('#unit').prop('disabled', false);
+         
+         var course = $('#course').val();
+         var year = $('#year').val();
+         var semester = $('#semester').val();
+
+         $.post('querUnit.php', {course1:course,year1:year, semester1:semester}, function(data){
+           $('#unitList').html(data);
+         })
+
+
+       })
+
+    })
+
+
+
+
+
+    </script>
+
+
   </body>
 </html>

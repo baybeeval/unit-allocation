@@ -1,22 +1,3 @@
-<?php
-require'session.php';
-require'connection.php';
-if (!alreadyin()) {
-  header("location: index.php");
-}
-$username=$_SESSION['username'];
-
-$q="SELECT * FROM `users` WHERE `Username`='$username' ";
-$result=mysqli_query($conn,$q);
-while($user =mysqli_fetch_array($result)) {
-	$firstname=$user['Firstname'];
-	$surname=$user['Surname'];
-	$username=$user['Username'];
-	
-}
-
-?>
-
 <html>
   <head>
 
@@ -78,115 +59,55 @@ while($user =mysqli_fetch_array($result)) {
   </div><!-- /.navbar-collapse -->   
   </div>
 </nav>
-<div class="row">
-  <div class="container">
-<h1>KARIBU  <?php echo $firstname ." ".$surname; ?></h1>
-<p> if you want to log out click <a href="logout.php">here</a> </p>
- 
 
 
- <div class="row">
-  <div class="col-md-4">
-    <button type="button" class="btn btn-primary">My Profile</button>
-  </div>
-
-  <div class="col-md-4">
-    <button type="button" class="btn btn-success">Timetable</button>
-  </div>
-
-  <div class="col-md-4">
-    <a href="modules/lecturers/unitsAllocation.php" class="btn btn-warning">Unit Allocation</a>
-  </div>
-</div>   
-  </div>
-</div>
-
-<h1>test</h1>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<footer>
-  <div class="container">
-    
-
-      <div class="col-md-1">
-      <h6>Copyright &copy; {valentine}</h6>
-      </div> <!--end col-md-1 -->
-     
-      <div class="col-md-4">
-      <h6> About us</h6>
-      <p>property of valentine mathai school of technology</p>
-      </div><!--end col-md-4 -->
-
-      <div class="col-md-1">
-        <h6>Navigation</h6>
-        <ul class="unstyled">
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-        </ul>
-
-      </div> <!--end col-md-1 -->
-     
-      <div class="col-md-4">
-      <h6>Follow Us</h6>
-        <ul class="unstyled">
-            <li><a href="">Facebook</a></li>
-            <li><a href="">Twitter</a></li>
-            <li><a href="">Tum</a></li>
-            <li><a href="">Google Plus</a></li>
-        </ul>
-
-      </div><!--end col-md-4 -->
-
-      <div class="col-md-1">
-      <h6> Coded by <span class=".glyphicon .glyphicon-heart" ".glyphicon .glyphicon-heart"> Valentine </span></h6>
-      </div><!--end col-md-4 -->
+  <div class= "row">
+      <div class="container">
+         <h1>Department Courses</h1>
+      </div>
    
-  </div><!--end contanier-->
+      </div>
+      <div class="container">
+      <!--form starts here-->
+         <form action="course.php" method="post">
+        <div class="form-group">
+          <label for="exampleinputcourseid">Course ID</label>
+          <input type="text" name="courseid" class="form-control" id="exampleinputcourseid" placeholder="Enter Course Id" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputcoursename">Course Name</label>
+          <input type="text" name="coursename" class="form-control" id="exampleInputcoursename" placeholder="Enter Course Name" required>
+        </div>
+        <button type="submit" class="btn btn-success">Add</button><span>
+          <?php
+          require "connection.php";
 
-</footer>
+          if (@$_POST['courseid'] && $_POST['coursename']) {
+            $Courseid=$_POST['courseid'];
+            $Coursename=$_POST['coursename'];
+
+            if(empty($Courseid)|| empty($Coursename)){
+              echo "fill all required fields!";
+            }else{
+                $p="INSERT INTO `course`(`Courseid`, `Course`) VALUES ('$Courseid','$Coursename')";
+
+            if (mysqli_query($conn,$p)){
+              echo "course has been added successfully!";
+            }else{
+              echo "error occured while adding course!";
+            }
+
+            }
+           
+          
+            
+          }
 
 
+          ?>
 
-
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="assets/js/jquery-3.1.1.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="assets/js/bootstrap.min.js"></script>      
+        </span>
+</form>
+</div>
 </body>
 </html>
-       
-
-
-
-
-
-
-
-
-

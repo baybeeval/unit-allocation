@@ -1,11 +1,14 @@
 <?php 
 require'connection.php';
 
-if ($_POST['Unitid'] && $_POST['Unitname']) {
-	$unitid=$_POST['Unitid'];
+if ($_POST['unitid'] && $_POST['Unitname']) {
+	$unitid=$_POST['unitid'];
 	$unitname=$_POST['Unitname'];
+	$course=$_POST['Course'];
+	$year=$_POST['Year'];
+	$semester=$_POST['Semester'];
 
-	$q="INSERT INTO `units`(`id`,`Unitid`, `Unitname`) VALUES (NULL,'$unitid','$unitname')";
+	$q="INSERT INTO `units`(`id`,`Unitid`, `Unitname` ,`Course`, `Year`, `Semester`) VALUES (NULL,'$unitid','$unitname','$course','$year','$semester' )";
 if (mysqli_query($conn,$q)) {
 	echo "Units added successfully";
 	header("location: units.php");

@@ -12,7 +12,7 @@ $re = mysqli_query($conn, $p);
 $row = mysqli_fetch_array($re);
 $name = $row['Unitname'];
 
-$queryValidate="SELECT * FROM `units` WHERE `Unitid`='$unit' ";
+$queryValidate="SELECT * FROM `unitsallocation` WHERE `Unitid`='$unit' ";
 $validateResult=mysqli_query($conn, $queryValidate);
 if (mysqli_num_rows($validateResult)>0) {
 	
@@ -28,7 +28,6 @@ if (mysqli_num_rows($validateResult)>0) {
 
 
 }
-
 
 }
 
