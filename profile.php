@@ -35,13 +35,13 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href=""><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+    <a class="navbar-brand" href="http://localhost/unit-allocation/home.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      <li class="active"><a href=""><i class="fa fa-book" aria-hidden="true"></i>About us</a></li>
+      
       <li><a href=""><i class="fa fa-address-book" aria-hidden="true"></i>Contacts</a></li>
     </ul>
     <form class="navbar-form navbar-left" role="search">
@@ -55,15 +55,6 @@
       <li><a href="" ><i class="fa fa-star" aria-hidden="true"></i> TUM</a></li>
       <li><a href="" ><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</a></li>
       <li><a href="" ><i class="fa fa-envelope" aria-hidden="true"></i> Gmail</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Unit Allocation</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contacts</a></li>
-        </ul>
-      </li>
     </ul>
   </div><!-- /.navbar-collapse -->   
   </div>
@@ -75,8 +66,17 @@
 
 
 
-
-<img src="..." alt="..." class="img-rounded">
-<p>
-  <button type="button" class="btn btn-primary"></button>
-</p>
+<div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="thumbnail">
+              <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">      
+                <p><a href="" class="btn btn-primary">Change your profile picture</a> 
+                <input type="file">
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+</body>
+</html>
