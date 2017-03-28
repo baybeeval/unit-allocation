@@ -9,6 +9,7 @@
 
       <!--Bootstrap CSS -->
        <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" media="screen">
 
    <!--Custom CSS-->
    <link rel="stylesheet" href="assets/css/styles.css" rel="stylesheet">

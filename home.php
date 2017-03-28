@@ -60,7 +60,8 @@ while($user =mysqli_fetch_array($result)) {
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-           <li><a href="contacts.php"><i class="fa fa-address-book" aria-hidden="true"></i>Contacts</a></li>
+      
+      <li><a href=""><i class="fa fa-address-book" aria-hidden="true"></i>Contacts</a></li>
     </ul>
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">
@@ -69,10 +70,10 @@ while($user =mysqli_fetch_array($result)) {
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="www.facebook.com" ><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
-      <li><a href="www.tum.c.ke" ><i class="fa fa-star" aria-hidden="true"></i> TUM</a></li>
-      <li><a href="www.twitter" ><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</a></li>
-      <li><a href="www.gmail.com" ><i class="fa fa-envelope" aria-hidden="true"></i> Gmail</a></li>
+      <li><a href="http://www.facebook.com" ><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+      <li><a href="http://www.tum.ac.ke" ><i class="fa fa-star" aria-hidden="true"></i> TUM</a></li>
+      <li><a href="http://www.twitter.com" ><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</a></li>
+      <li><a href="http://www.gmail.com" ><i class="fa fa-envelope" aria-hidden="true"></i> Gmail</a></li>
     </ul>
   </div><!-- /.navbar-collapse -->   
   </div>
@@ -86,11 +87,11 @@ while($user =mysqli_fetch_array($result)) {
 
  <div class="row">
   <div class="col-md-4">
-    <button type="button" class="btn btn-primary">My Profile</button>
+    <a href="profile.php"  class="btn btn-primary">My Profile</a>
   </div>
 
   <div class="col-md-4">
-    <button type="button" class="btn btn-success">Timetable</button>
+    <a href="timetable.php" class="btn btn-success">Timetable</a>
   </div>
 
   <div class="col-md-4">

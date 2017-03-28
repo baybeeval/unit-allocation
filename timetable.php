@@ -1,7 +1,7 @@
 <html>
   <head>
 
-      <title></title>
+      <title>Timetable</title>
       <meta name="description" content="">
      
       <!--mobile viewpoint optimmized-->
@@ -16,6 +16,8 @@
 
    <!--Include Modernizr in the head, before any other Javascript -->
    <script src="assets/js/modernizr-.2.6.2.min.js" rel="stylesheet"></script>
+   <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
 
 <!--All Javascript at the bottom of the page for faster page loading -->
 
@@ -51,7 +53,7 @@
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
-     <li><a href="http://www.facebook.com" ><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+       <li><a href="http://www.facebook.com" ><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
       <li><a href="http://www.tum.ac.ke" ><i class="fa fa-star" aria-hidden="true"></i> TUM</a></li>
       <li><a href="http://www.twitter.com" ><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</a></li>
       <li><a href="http://www.gmail.com" ><i class="fa fa-envelope" aria-hidden="true"></i> Gmail</a></li>
@@ -59,6 +61,64 @@
   </div><!-- /.navbar-collapse -->   
   </div>
 </nav>
+<div class="row">
+  <div class="container">
+  <h3>TIMETABLE SCHECULAR</h3>
+
+  <div class="row">
+    <form class="form-inline" role="form">
+
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputunitid">UNIT</label>
+     <div id="unitList">
+    <select name="units" class="form-control" id="units">
+        <option>---  SELECT UNITS ---</option>
+        <?php
+        require'connection.php';
+
+            $pp= "SELECT * FROM `units`";
+                       $rp= mysqli_query($conn, $pp);
+
+                            while ($rowp= mysqli_fetch_array($rp)){
+
+                                  $unitid=$rowp['Unitid'];
+                                  $unitname=$rowp['Unitname'];
+                                  ?>
+                                  <option value="<?php echo "$unitid";?> "><?php echo "$unitid"." "."$unitname";?></option>
+                          <?php
+                            }
+                            ?>
+      </select>
+      </div>
+  </div>
+
+   <div class="form-group">
+    <label class="sr-only" for="exampleInputclassid">CLASS</label>
+    <input type="text" class="form-control" id="exampleInputclassid" placeholder="Enter class">
+  </div>
+
+   <div class="form-group">
+    <label class="sr-only" for="exampleInputday">DAY</label>
+    <input type="text" class="form-control" id="exampleInputday" placeholder="Enter Day">
+  </div> 
+
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputtime">TIME</label>
+    <input type="varchar" class="form-control" id="exampleInputtime" placeholder="Enter time">
+  </div>
+
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputvenue">VENUE</label>
+    <input type="venue" class="form-control" id="exampleInputvenue" placeholder="Enter Venue">
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+  </div>
+
+    
+  </div>
+</div>
 
 
 
@@ -66,16 +126,11 @@
 
 
 
-<div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="thumbnail">
-              <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">      
-                <p><a href="" class="btn btn-primary">Change your profile picture</a> 
-                <input type="file">
-              </div>
-            </div>
-          </div>
+
+
+
+
+
         </div>
 </div>
 </body>

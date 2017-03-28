@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -24,13 +26,13 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="home.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+    <a class="navbar-brand" href="http://localhost/unit-allocation/home.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      <li class="active"><a href=""><i class="fa fa-book" aria-hidden="true"></i>About us</a></li>
+      
       <li><a href=""><i class="fa fa-address-book" aria-hidden="true"></i>Contacts</a></li>
     </ul>
     <form class="navbar-form navbar-left" role="search">
@@ -40,14 +42,15 @@
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="www.facebook.com" ><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
-      <li><a href="www.tum.ac.ke" ><i class="fa fa-star" aria-hidden="true"></i> TUM</a></li>
-      <li><a href="www.twitter.com" ><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</a></li>
-      <li><a href="www.gmail.com" ><i class="fa fa-envelope" aria-hidden="true"></i> Gmail</a></li>
+       <li><a href="http://www.facebook.com" ><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+      <li><a href="http://www.tum.ac.ke" ><i class="fa fa-star" aria-hidden="true"></i> TUM</a></li>
+      <li><a href="http://www.twitter.com" ><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</a></li>
+      <li><a href="http://www.gmail.com" ><i class="fa fa-envelope" aria-hidden="true"></i> Gmail</a></li>
     </ul>
   </div><!-- /.navbar-collapse -->   
   </div>
 </nav>
+
 
       <div class= "row">
       <div class="container">
@@ -89,7 +92,7 @@
         </div>
         
         <div class="form-group">
-          <label for="exampleInputyear">>Year</label>
+          <label for="exampleInputyear">Year</label>
           <input type="varchar" name="Year" class="form-control" id="exampleInputyear" placeholder="Enter Year">
         </div>
 
