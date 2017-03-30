@@ -12,7 +12,7 @@ while($user =mysqli_fetch_array($result)) {
 	$firstname=$user['Firstname'];
 	$surname=$user['Surname'];
 	$username=$user['Username'];
-	
+
 }
 
 ?>
@@ -22,7 +22,7 @@ while($user =mysqli_fetch_array($result)) {
 
       <title></title>
       <meta name="description" content="">
-     
+
       <!--mobile viewpoint optimmized-->
       <meta name="viewreport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -60,7 +60,7 @@ while($user =mysqli_fetch_array($result)) {
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      
+
       <li><a href=""><i class="fa fa-address-book" aria-hidden="true"></i>Contacts</a></li>
     </ul>
     <form class="navbar-form navbar-left" role="search">
@@ -75,14 +75,14 @@ while($user =mysqli_fetch_array($result)) {
       <li><a href="http://www.twitter.com" ><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</a></li>
       <li><a href="http://www.gmail.com" ><i class="fa fa-envelope" aria-hidden="true"></i> Gmail</a></li>
     </ul>
-  </div><!-- /.navbar-collapse -->   
+  </div><!-- /.navbar-collapse -->
   </div>
 </nav>
 <div class="row">
   <div class="container">
 <h1>KARIBU  <?php echo $firstname ." ".$surname; ?></h1>
 <p> if you want to log out click <a href="logout.php">here</a> </p>
- 
+
 
 
  <div class="row">
@@ -97,7 +97,7 @@ while($user =mysqli_fetch_array($result)) {
   <div class="col-md-4">
     <a href="modules/lecturers/unitsAllocation.php" class="btn btn-warning">Unit Allocation</a>
   </div>
-</div>   
+</div>
   </div>
 </div>
 
@@ -128,12 +128,12 @@ while($user =mysqli_fetch_array($result)) {
 
 <footer>
   <div class="container">
-    
+
 
       <div class="col-md-1">
       <h6>Copyright &copy; {valentine}</h6>
       </div> <!--end col-md-1 -->
-     
+
       <div class="col-md-4">
       <h6> About us</h6>
       <p>property of valentine mathai school of technology</p>
@@ -149,7 +149,7 @@ while($user =mysqli_fetch_array($result)) {
         </ul>
 
       </div> <!--end col-md-1 -->
-     
+
       <div class="col-md-4">
       <h6>Follow Us</h6>
         <ul class="unstyled">
@@ -164,7 +164,7 @@ while($user =mysqli_fetch_array($result)) {
       <div class="col-md-1">
       <h6> Coded by <span class=".glyphicon .glyphicon-heart" ".glyphicon .glyphicon-heart"> Valentine </span></h6>
       </div><!--end col-md-4 -->
-   
+
   </div><!--end contanier-->
 
 </footer>
@@ -177,16 +177,6 @@ while($user =mysqli_fetch_array($result)) {
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="assets/js/jquery-3.1.1.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="assets/js/bootstrap.min.js"></script>      
+    <script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>
-       
-
-
-
-
-
-
-
-
-
