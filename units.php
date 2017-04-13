@@ -12,11 +12,21 @@
       <script src="../../assets/js/html5shiv.js"></script>
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
+
+    <style type="text/css">
+  .navbar-custom {
+    color: #FFFFFF;
+    background-color: #1b5e20;
+}
+.navbar-custom a {
+  color: #FFFFFF;
+}
+</style>
   </head>
 
 
   <body>
-  <nav class="navbar navbar-default" role="navigation">
+  <nav class="navbar navbar-custom" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="container">
  <div class="navbar-header">

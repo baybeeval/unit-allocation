@@ -10,6 +10,15 @@
       <script src="../../assets/js/html5shiv.js"></script>
       <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+  .navbar-custom {
+    color: #FFFFFF;
+    background-color: #1b5e20;
+}
+.navbar-custom a {
+  color: #FFFFFF;
+}
+</style>
   </head>
 
 
