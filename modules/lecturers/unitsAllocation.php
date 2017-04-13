@@ -33,6 +33,9 @@ require'../../connection.php';
 .navbar-custom a {
   color: #FFFFFF;
 }
+#search {
+    width: 15em;  height: 2em;
+}
 </style>
 
 </head>
@@ -155,8 +158,8 @@ require'../../connection.php';
 
 
                 <div class="col-md-4">
-                  <div style="padding-left:470px;">
-                  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
+                  <div style="padding-left:370px;">
+                  <button type="button" id="search" class="btn btn-primary btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
                   </div>
                 </div>
 
