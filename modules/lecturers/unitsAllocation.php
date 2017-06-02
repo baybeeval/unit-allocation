@@ -33,6 +33,9 @@ require'../../connection.php';
 .navbar-custom a {
   color: #FFFFFF;
 }
+#search {
+    width: 15em;  height: 2em;
+}
 </style>
 
 </head>
@@ -87,13 +90,13 @@ require'../../connection.php';
              </thead>
 
              <tr>
-               <td><?php 
+               <td><?php
                         $q ="SELECT * FROM  `unitsallocation`";
                          $r = mysqli_query($conn, $q);
                             $i=0;
                             while ($row = mysqli_fetch_array($r)) {
                               $id = $row['id'];
-                              
+
                               $unitID = $row['Unitid'];
                               $unitName = $row['Unitname'];
                               $i++;
@@ -155,10 +158,12 @@ require'../../connection.php';
 
 
                 <div class="col-md-4">
-                  <button type="button" style="text-align:center;" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
+                  <div style="padding-left:370px;">
+                  <button type="button" id="search" class="btn btn-primary btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
+                  </div>
                 </div>
 
-                
+
       </div>
 
 
@@ -167,7 +172,7 @@ require'../../connection.php';
                   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                     <div class="modal-dialog modal-lg" role="document">
                       <div class="modal-content">
-                           
+
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                           <h4 class="modal-title">Add units</h4>
@@ -179,7 +184,7 @@ require'../../connection.php';
                                       <label for="exampleInputcourse1">Course</label>
                                       <select class="form-control" name="course" id="course" onchange="getunits()">
                                         <option value="">----------SELECT COURSE-----------------------</option>
-                                              <?php 
+                                              <?php
                                                     $qC ="SELECT * FROM `course` ";
                                                                       $rC = mysqli_query($conn, $qC);
 
@@ -219,9 +224,9 @@ require'../../connection.php';
                                       <option value="">----------SELECT UNITS-----------------------</option>
                                       </select>
                                        </div>
-                                      
+
                                     </div>
-                                  
+
                                     <button type="submit" class="btn btn-default">Submit</button>
                                   </form>
 
@@ -230,8 +235,6 @@ require'../../connection.php';
                       </div>
                     </div>
                   </div>
-                   
-    
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="../../assets/js/jquery-3.1.1.js"></script>
@@ -242,21 +245,21 @@ require'../../connection.php';
       if ($('#course').val()=='') {
            $('#year').prop('disabled', true)
            $('#semester').prop('disabled', true);
-           $('#unit').prop('disabled', true);       
+           $('#unit').prop('disabled', true);
       }
 
       $('#course').on('change', function(){
-        $("#year").prop("disabled", false);     
+        $("#year").prop("disabled", false);
       })
 
        $("#year").on('change', function(){
          $('#semester').prop('disabled', false);
        })
 
-      
+
        $("#semester").on('change', function(){
          $('#unit').prop('disabled', false);
-         
+
          var course = $('#course').val();
          var year = $('#year').val();
          var semester = $('#semester').val();
