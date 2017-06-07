@@ -20,8 +20,8 @@ if (mysqli_num_rows($validateResult)>0) {
 }else{
 	$q ="INSERT INTO `unitsallocation`(`id`, `Unitid`, `Unitname`, `course`, `year`, `semsester`) VALUES (NULL,'$unit', '$name', '$course', '$year', '$semester')";
 	if (mysqli_query($conn, $q)) {
-	echo "Unit added successfully";
-	header("location: modules/lecturers/unitsAllocation.php");
+	echo "<script>alert('Unit added successfully')</script>";
+	 echo "<script>window.open('modules/lecturers/unitsAllocation.php','_self')</script>";
 	}else{
 		echo "an error occurred".mysql_errno();
 	}
