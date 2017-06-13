@@ -1,9 +1,12 @@
+<?php
+require'connection.php';
+?>
 <html>
   <head>
 
       <title>Timetable</title>
       <meta name="description" content="">
-     
+
       <!--mobile viewpoint optimmized-->
       <meta name="viewreport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -30,6 +33,19 @@
 .navbar-custom a {
   color: #FFFFFF;
 }
+table{
+
+ padding:2px;
+ width:1000px;
+
+}
+th{
+  border:2px solid black !important;
+}
+input{
+  padding:5px;
+}
+a:link{text-decoration:none;}
 </style>
 
 </head>
@@ -51,14 +67,14 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      
-      <li><a href=""><i class="fa fa-address-book" aria-hidden="true"></i>Contacts</a></li>
+
+      <li><a href="http://localhost/unit-allocation/contacts.php"><i class="fa fa-address-book" aria-hidden="true"></i>Contacts</a></li>
     </ul>
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Search">
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      <button type="submit" class="btn btn-default">Search</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
        <li><a href="http://www.facebook.com" ><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
@@ -66,7 +82,7 @@
       <li><a href="http://www.twitter.com" ><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</a></li>
       <li><a href="http://www.gmail.com" ><i class="fa fa-envelope" aria-hidden="true"></i> Gmail</a></li>
     </ul>
-  </div><!-- /.navbar-collapse -->   
+  </div><!-- /.navbar-collapse -->
   </div>
 </nav>
 <div class="row">
@@ -74,72 +90,63 @@
   <h3>TIMETABLE SCHECULAR</h3>
 
   <div class="row">
-    <form class="form-inline" role="form">
 
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputunitid">UNIT</label>
-     <div id="unitList">
-    <select name="units" class="form-control" id="units">
-        <option>---  SELECT UNITS ---</option>
-        <?php
-        require'connection.php';
+    <table class="table table-hover">
+                         <tr align="center"><td colspan="6"><h2>Master timetable</h2></tr>
+                         <tr align="center">
+                         <th>S.N </th>
+                         <th>Username</th>
+                         <th>Unitid </th>
+                         <th>Venue</th>
+                         <th>Time</th>
+                         <th>Delete </th>
+                         </tr>
+   <?php
+   $sel="SELECT * FROM `mastertimetable`";
+   $run=mysqli_query($conn,$sel);
+   $i=0;
+   while($row=mysqli_fetch_array($run)){
+   $id=$row['id'];
+   $Username=$row['Username'];
+   $Unitid=$row['Unitid'];
+   $Venue=$row['Venue'];
+   $Time=$row['Time'];
+   $i++;
 
-            $pp= "SELECT * FROM `units`";
-                       $rp= mysqli_query($conn, $pp);
-
-                            while ($rowp= mysqli_fetch_array($rp)){
-
-                                  $unitid=$rowp['Unitid'];
-                                  $unitname=$rowp['Unitname'];
-                                  ?>
-                                  <option value="<?php echo "$unitid";?> "><?php echo "$unitid"." "."$unitname";?></option>
-                          <?php
-                            }
-                            ?>
-      </select>
-      </div>
-  </div>
-
-   <div class="form-group">
-    <label class="sr-only" for="exampleInputclassid">CLASS</label>
-    <input type="text" class="form-control" id="exampleInputclassid" placeholder="Enter class">
-  </div>
-
-   <div class="form-group">
-    <label class="sr-only" for="exampleInputday">DAY</label>
-    <input type="text" class="form-control" id="exampleInputday" placeholder="Enter Day">
-  </div> 
-
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputtime">TIME</label>
-    <input type="varchar" class="form-control" id="exampleInputtime" placeholder="Enter time">
-  </div>
-
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputvenue">VENUE</label>
-    <input type="venue" class="form-control" id="exampleInputvenue" placeholder="Enter Venue">
-  </div>
-
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-  </div>
-
-    
+   ?>
+   <tr align="center">
+   <td><?php echo $i; ?></td>
+   <td><?php echo $Username; ?></td>
+   <td><?php echo $Unitid; ?></td>
+   <td><?php echo $Venue; ?></td>
+   <td><?php echo $Time; ?></td>
+   <td><a href="timetable.php?delete=<?php echo $id; ?>">Delete</a></td>
+   </tr>
+   <?php }?>
+   </table>
+   <?php
+   if(isset($_GET['delete']))
+   {
+     $delete_id=$_GET['delete'];
+     $delete="DELETE FROM `mastertimetable` WHERE `mastertimetable`.`id` ='$delete_id'";
+     $run_delete=mysqli_query($con,$delete);
+     if($run_delete)
+     {
+       echo "<script>alert('Data deleted successfully')</script>";
+       echo "<script>window.open('basic_table.php','_self')</script>";
+     }
+   }
+   ?>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 
 
         </div>
 </div>
+
+<?php
+  include('footer.php');
+  ?>
 </body>
 </html>

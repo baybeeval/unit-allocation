@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'connection.php';
 
 if ($_POST) {
@@ -15,7 +15,7 @@ $name = $row['Unitname'];
 $queryValidate="SELECT * FROM `unitsallocation` WHERE `Unitid`='$unit' ";
 $validateResult=mysqli_query($conn, $queryValidate);
 if (mysqli_num_rows($validateResult)>0) {
-	
+
 	echo "unit already added!";
 }else{
 	$q ="INSERT INTO `unitsallocation`(`id`, `Unitid`, `Unitname`, `course`, `year`, `semsester`) VALUES (NULL,'$unit', '$name', '$course', '$year', '$semester')";

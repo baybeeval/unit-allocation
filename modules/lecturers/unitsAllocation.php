@@ -58,7 +58,7 @@ require'../../connection.php';
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
 
-      <li><a href=""><i class="fa fa-address-book" aria-hidden="true"></i>Contacts</a></li>
+      <li><a href="http://localhost/unit-allocation/contacts.php"><i class="fa fa-address-book" aria-hidden="true"></i>Contacts</a></li>
     </ul>
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">
@@ -236,7 +236,6 @@ require'../../connection.php';
                     </div>
                   </div>
 
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="../../assets/js/jquery-3.1.1.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -279,6 +278,7 @@ require'../../connection.php';
 
 
     </script>
+
 
 
   </body>

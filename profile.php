@@ -50,7 +50,7 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
       
-      <li><a href=""><i class="fa fa-address-book" aria-hidden="true"></i>Contacts</a></li>
+      <li><a href="http://localhost/unit-allocation/contacts.php"><i class="fa fa-address-book" aria-hidden="true"></i>Contacts</a></li>
     </ul>
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">

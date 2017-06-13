@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Online Workload System</title>
+    <title>Lecturer unit allocation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -12,10 +12,11 @@
     <![endif]-->
 
   <body>
-
-  <?php
+<?php
   include"nav.php";  
   ?>
+
+
   <div class="row">
   <div class="container">
     <h1>Login</h1>
@@ -27,16 +28,13 @@
  <!--form starts here-->
          <form action='index.php' method='POST'>
           <div class="form-group">
-            <label for="exampleInputusername1">Username</label>
+            <label for="exampleInputusername1">Adminstrator</label>
             <input type="text" name="username" class="form-control" id="exampleusername1" placeholder="Enter username">
           </div>
-
-
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
           </div>
-
 
           <div class="checkbox">
             <label>
@@ -81,17 +79,16 @@
               }
               ?>        
 
-      <a class="btn btn-default" id="admin" href="admin.php">login as Administator</a>
 </div>
-
-<
-
 
 
 
 <?php
   include('footer.php');  
   ?>
+
+
+
 
 
 

@@ -1,22 +1,3 @@
-<?php
-require'session.php';
-require'connection.php';
-if (!alreadyin()) {
-  header("location: index.php");
-}
-$username=$_SESSION['username'];
-
-$q="SELECT * FROM `users` WHERE `Username`='$username' ";
-$result=mysqli_query($conn,$q);
-while($user =mysqli_fetch_array($result)) {
-	$firstname=$user['Firstname'];
-	$surname=$user['Surname'];
-	$username=$user['Username'];
-
-}
-
-?>
-
 <html>
   <head>
 
@@ -88,41 +69,23 @@ while($user =mysqli_fetch_array($result)) {
 </nav>
 <div class="row">
   <div class="container">
-<h1>KARIBU  <?php echo $firstname ." ".$surname; ?></h1>
-<p> if you want to log out click <a href="logout.php">here</a> </p>
- 
 
-<h1>SELECTIONS</h1>
-<div class="row">
-  <div class="col-md-4">
-    <a href="profile.php"  class="btn btn-primary" id="bott">My Profile</a>
-  </div>
 
-  <div class="col-md-4">
-    <a href="timetable.php" class="btn btn-success" id="buzz">Timetable</a>
-  </div>
+                <h1>CONTACTS</h1>
+                <p>For any queries or suggestions or changes please contact you deparments office
 
-  <div class="col-md-4">
-    <a href="modules/lecturers/unitsAllocation.php" class="btn btn-warning" id="butt">Unit Allocation</a>
+
+                Tel:
+                Tel:
+                Tel:
+                Tel:
+                Tel:
+                Tel:
+                Tel:
+                </p>
   </div>
 </div>
-  </div>
-</div>
-
-
- <style type="text/css">
-     #butt{
-      background-color: #D35400;
-         }
-      #buzz{
-        background-color:#008000;
-      }
-      #bott{
-        background-color: #008080;
-      }
-
-        </style>
- <?php
+<?php
   include('footer.php');  
   ?>
 
