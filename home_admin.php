@@ -1,15 +1,31 @@
+<?php
+require'session.php';
+require'connection.php';
+if (!alreadyin()) {
+  
+}
+$username=$_SESSION['username'];
+
+$q="SELECT * FROM `admin` WHERE `username`='$username' ";
+$result=mysqli_query($conn,$q);
+while($user =mysqli_fetch_array($result)) {
+	$username=$user['username'];
+
+}
+
+?>
+
 <html>
   <head>
 
       <title></title>
       <meta name="description" content="">
-     
+
       <!--mobile viewpoint optimmized-->
       <meta name="viewreport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
       <!--Bootstrap CSS -->
        <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" media="screen">
 
    <!--Custom CSS-->
    <link rel="stylesheet" href="assets/css/styles.css" rel="stylesheet">
@@ -50,6 +66,7 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
+
       <li><a href="http://localhost/unit-allocation/contacts.php"><i class="fa fa-address-book" aria-hidden="true"></i>Contacts</a></li>
     </ul>
     <form class="navbar-form navbar-left" role="search">
@@ -59,66 +76,59 @@
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="" ><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
-      <li><a href="" ><i class="fa fa-star" aria-hidden="true"></i> TUM</a></li>
-      <li><a href="" ><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</a></li>
-      <li><a href="" ><i class="fa fa-envelope" aria-hidden="true"></i> Gmail</a></li>
+      <li><a href="http://www.facebook.com" ><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+      <li><a href="http://www.tum.ac.ke" ><i class="fa fa-star" aria-hidden="true"></i> TUM</a></li>
+      <li><a href="http://www.twitter.com" ><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</a></li>
+      <li><a href="http://www.gmail.com" ><i class="fa fa-envelope" aria-hidden="true"></i> Gmail</a></li>
     </ul>
-  </div><!-- /.navbar-collapse -->   
+  </div><!-- /.navbar-collapse -->
   </div>
 </nav>
+<div class="row">
+  <div class="container">
+<h1>KARIBU  <?php echo $username; ?></h1>
+<p> if you want to log out click <a href="logout.php">here</a> </p>
+ 
 
+<h1>SELECTIONS</h1>
+<div class="row">
+  <div class="col-md-4">
+    <a href="operations.php"  class="btn btn-primary" id="bott">Operations</a>
+  </div>
 
-  <div class= "row">
-      <div class="container">
-         <h1>Department Courses</h1>
-      </div>
-   
-      </div>
-      <div class="container">
-      <!--form starts here-->
-         <form action="course.php" method="post">
-        <div class="form-group">
-          <label for="exampleinputcourseid">Course ID</label>
-          <input type="text" name="courseid" class="form-control" id="exampleinputcourseid" placeholder="Enter Course Id" required>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputcoursename">Course Name</label>
-          <input type="text" name="coursename" class="form-control" id="exampleInputcoursename" placeholder="Enter Course Name" required>
-        </div>
-        <button type="submit" class="btn btn-success">Add</button><span>
-          <?php
-          require "connection.php";
+  <div class="col-md-4">
+    <a href="timetable.php" class="btn btn-success" id="buzz">Timetable</a>
+  </div>
 
-          if (@$_POST['courseid'] && $_POST['coursename']) {
-            $Courseid=$_POST['courseid'];
-            $Coursename=$_POST['coursename'];
-
-            if(empty($Courseid)|| empty($Coursename)){
-              echo "fill all required fields!";
-            }else{
-                $p="INSERT INTO `course`(`Courseid`, `Course`) VALUES ('$Courseid','$Coursename')";
-
-            if (mysqli_query($conn,$p)){
-              echo "course has been added successfully!";
-            }else{
-              echo "error occured while adding course!";
-            }
-
-            }
-           
-          
-            
-          }
-
-
-          ?>
-
-        </span>
-</form>
+  <div class="col-md-4">
+    <a href="modules/lecturers/unitsAllocation.php" class="btn btn-warning" id="butt">Unit Allocation</a>
+  </div>
 </div>
-<?php
+  </div>
+</div>
+
+
+ <style type="text/css">
+     #butt{
+      background-color: #D35400;
+         }
+      #buzz{
+        background-color:#008000;
+      }
+      #bott{
+        background-color: #008080;
+      }
+
+        </style>
+ <?php
   include('footer.php');  
   ?>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -26,14 +26,14 @@
 <div class="container">
   
  <!--form starts here-->
-         <form action='index.php' method='POST'>
+         <form action='admin.php' method='POST'>
           <div class="form-group">
             <label for="exampleInputusername1">Adminstrator</label>
             <input type="text" name="username" class="form-control" id="exampleusername1" placeholder="Enter username">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" name="Password" class="form-control" id="exampleInputPassword1" placeholder="Password">
           </div>
 
           <div class="checkbox">
@@ -44,25 +44,24 @@
           <button type="submit" class="btn btn-default" id="sub">Submit</button>
         </form>
 
-        <a class="btn btn-success" id="Btn" href="register.php">Register new account</a>
 
               <?php
               require'session.php';
               require'connection.php';
               if (alreadyin()) {
-                header("location: home.php");
+                header("location: home_admin.php");
               }
               if($_POST){
                 $username=$_POST['username'];
-                $password=$_POST['password'];
-                if (!empty($username)&&!empty($password)) {
+                $Password=$_POST['Password'];
+                if (!empty($username)&&!empty($Password)) {
                   
                 
-                $q="SELECT * FROM `users` WHERE `Username`='$username' and `Password`='$password'";
+                $q="SELECT * FROM `admin` WHERE `username`='$username' and `Password`='$Password'";
                 $r=mysqli_query($conn,$q);
                 if (mysqli_num_rows($r)==1) {
                   $_SESSION['username']=$username;
-                  header("location: home.php"); 
+                  header("location: home_admin.php"); 
                 }
                 else{
                   ?>

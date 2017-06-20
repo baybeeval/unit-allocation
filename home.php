@@ -95,10 +95,6 @@ while($user =mysqli_fetch_array($result)) {
 <h1>SELECTIONS</h1>
 <div class="row">
   <div class="col-md-4">
-    <a href="profile.php"  class="btn btn-primary" id="bott">My Profile</a>
-  </div>
-
-  <div class="col-md-4">
     <a href="timetable.php" class="btn btn-success" id="buzz">Timetable</a>
   </div>
 
@@ -116,9 +112,6 @@ while($user =mysqli_fetch_array($result)) {
          }
       #buzz{
         background-color:#008000;
-      }
-      #bott{
-        background-color: #008080;
       }
 
         </style>

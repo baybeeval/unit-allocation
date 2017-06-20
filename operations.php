@@ -28,6 +28,13 @@
 .navbar-custom a {
   color: #FFFFFF;
 }
+#bragg{
+  background-color: #D35400; 
+}
+#bogg{
+  background-color: #008080;
+}
+
 </style>
 
 </head>
@@ -43,7 +50,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="http://localhost/unit-allocation/home.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+    <a class="navbar-brand" href="http://localhost/unit-allocation/home_admin.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -67,162 +74,33 @@
   </div><!-- /.navbar-collapse -->   
   </div>
 </nav>
-<html lang="en">
 
-<head>
-
-  <title>PHP - jquery ajax crop image before upload using croppie plugins</title>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-
-  <script src="http://demo.itsolutionstuff.com/plugin/croppie.js"></script>
-
-  <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
-
-  <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/croppie.css">
-
-</head>
-
-<body>
-
-
-<div class="container">
-
-  <div class="panel panel-default">
-
-    <div class="panel-body">
-
-
-      <div class="row">
-
-        <div class="col-md-4 text-center">
-
-        <div id="upload-demo" style="width:350px"></div>
-
-        </div>
-
-        <div class="col-md-4" style="padding-top:30px;">
-
-        <strong>Select Image:</strong>
-
-        <br/>
-
-        <input type="file" id="upload">
-
-        <br/>
-
-        <button class="btn btn-success upload-result">Upload Image</button>
-
-        </div>
-
-        <div class="col-md-4" style="">
-
-        <div id="upload-demo-i" style="background:#e1e1e1;width:300px;padding:30px;height:300px;margin-top:30px"></div>
-
-        </div>
-
-      </div>
-
-
+  
+<div class="row">
+  <div class="container">
+    <div class="col-md-4">
+      <a href="units.php"  class="btn btn-primary" id="bragg">Add Units</a>
     </div>
 
+        <div class="col-md-4">
+         <a href="course.php" class="btn btn-success" id="bogg">Add Courses</a>
+        </div>
   </div>
-
 </div>
 
-
-<script type="text/javascript">
-
-$uploadCrop = $('#upload-demo').croppie({
-
-    enableExif: true,
-
-    viewport: {
-
-        width: 200,
-
-        height: 200,
-
-        type: 'circle'
-
-    },
-
-    boundary: {
-
-        width: 300,
-
-        height: 300
-
-    }
-
-});
-
-
-$('#upload').on('change', function () {
-
-  var reader = new FileReader();
-
-    reader.onload = function (e) {
-
-      $uploadCrop.croppie('bind', {
-
-        url: e.target.result
-
-      }).then(function(){
-
-        console.log('jQuery bind complete');
-
-      });
+<?php
+  include('footer.php');  
+  ?>
 
 
 
-    }
-
-    reader.readAsDataURL(this.files[0]);
-
-});
-
-
-$('.upload-result').on('click', function (ev) {
-
-  $uploadCrop.croppie('result', {
-
-    type: 'canvas',
-
-    size: 'viewport'
-
-  }).then(function (resp) {
-
-
-    $.ajax({
-
-      url: "/ajaxpro.php",
-
-      type: "POST",
-
-      data: {"image":resp},
-
-      success: function (data) {
-
-        html = '<img src="' + resp + '" />';
-
-        $("#upload-demo-i").html(html);
-
-      }
-
-    });
-
-  });
-
-});
-
-
-</script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="assets/js/jquery-3.1.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/bootstrap.min.js"></script>
 
 
 </body>
 
 </html>
 
-</body>
-</html>
